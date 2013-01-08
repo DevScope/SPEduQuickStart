@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="bae9d56d-b3d6-450e-86f1-7980d8960d07" solutionId="bae9d56d-b3d6-450e-86f1-7980d8960d07" resetWebServer="false" name="SPEduQuickStart" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="00255ce5-41da-48c2-9e86-30b6621962b7" />
+    <featureReference itemId="c3b72ebc-49f4-4c70-8eb6-fbd801795285" />
+    <featureReference itemId="31ee60f6-6f39-49af-83c9-dd4626c212fe" />
+    <featureReference itemId="9c36ca91-de94-46b6-a7bf-cec5cec1af42" />
+    <featureReference itemId="e6b542fd-cecd-4a96-a86d-fa032d96637b" />
+  </features>
+</package>

@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SPEduQuickStart</RootNamespace>
+    <AssemblyName>SPEduQuickStart</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{BB1F664B-9266-4fd6-B973-E1E44974B511};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <ActiveDeploymentConfiguration>Default</ActiveDeploymentConfiguration>
+    <CKSDEV_FeaturesSelectedForActivation>c3b72ebc-49f4-4c70-8eb6-fbd801795285;00255ce5-41da-48c2-9e86-30b6621962b7;07749d6e-bd37-4dce-88b4-8aacab2e7728;31ee60f6-6f39-49af-83c9-dd4626c212fe;9c36ca91-de94-46b6-a7bf-cec5cec1af42;e3d5447e-19a1-4e5c-a0aa-640b74935492</CKSDEV_FeaturesSelectedForActivation>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SandboxedSolution>True</SandboxedSolution>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.SharePoint" />
+    <Reference Include="Microsoft.SharePoint.Security" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Code\SitesCreation.cs" />
+    <Compile Include="Code\SPGenerateHelpers.cs" />
+    <Compile Include="Features\SiteTemplates\SiteTemplates.EventReceiver.cs">
+      <DependentUpon>SiteTemplates.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receivers\ListsEventReceiver\ListsEventReceiver.cs" />
+    <Compile Include="WebParts\VepGenerate\VepGenerate.ascx.cs">
+      <DependentUpon>VepGenerate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\VepGenerate\VepGenerate.ascx.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VepGenerate.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\Modules\Modules.feature">
+      <FeatureId>{e6b542fd-cecd-4a96-a86d-fa032d96637b}</FeatureId>
+    </None>
+    <None Include="Features\SiteSandBoxWebParts\SiteSandBoxWebParts.feature">
+      <FeatureId>{9c36ca91-de94-46b6-a7bf-cec5cec1af42}</FeatureId>
+    </None>
+    <None Include="Features\SiteReceivers\SiteReceivers.feature">
+      <FeatureId>{31ee60f6-6f39-49af-83c9-dd4626c212fe}</FeatureId>
+    </None>
+    <None Include="Features\SiteContentTypes\SiteContentTypes.feature">
+      <FeatureId>{c3b72ebc-49f4-4c70-8eb6-fbd801795285}</FeatureId>
+    </None>
+    <None Include="Features\SiteColumns\SiteColumns.feature">
+      <FeatureId>{00255ce5-41da-48c2-9e86-30b6621962b7}</FeatureId>
+    </None>
+    <None Include="Features\SiteTemplates\SiteTemplates.feature">
+      <FeatureId>{5ae62dfb-0235-482f-b509-a051a5618518}</FeatureId>
+    </None>
+    <None Include="key.snk" />
+    <None Include="ModuleSPEduQuickStart\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{65ac08dc-e4c0-46cc-b4c5-7d506e93f44d}</SharePointProjectItemId>
+    </None>
+    <None Include="Package\Package.package">
+      <PackageId>{bae9d56d-b3d6-450e-86f1-7980d8960d07}</PackageId>
+    </None>
+    <None Include="Package\Package.Template.xml">
+      <DependentUpon>Package.package</DependentUpon>
+    </None>
+    <None Include="Receivers\ListsEventReceiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{f20c357e-969f-4cff-9c3b-71f51e4d059c}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteColumns\SiteColums\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{31070b17-c0d3-4d4c-9792-7cf5dc3135ea}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteContentTypes\ClassContentType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7bc4786d-4f3b-41d2-bdd0-214505c868b0}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteContentTypes\CourseContentType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a8c6bf68-1e60-4a64-8ec8-23a6dd2f195b}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteContentTypes\YearContentType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{00ae8ee3-200e-473a-8681-1292a67a33a2}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteContentTypes\YearForClassContentType\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a27f0193-5d05-43ba-b60d-f82973867268}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\ClassSiteTemplate\ClassSiteTemplateStamp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{b692db16-8591-4892-bde0-f65905a16b38}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\ClassSiteTemplate\ClassSiteTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e3f62701-686d-4d0d-8a5a-3533b7791a24}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\CourseSiteTemplate\CourseSiteTemplateStamp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{7fd54836-2cce-4d1e-9086-86f65c27ad17}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\CourseSiteTemplate\CourseSiteTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{bdb65e66-389a-4110-ae95-6b4c067ea081}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Features\ClassSiteTemplateStamp\ClassSiteTemplateStamp.Feature" />
+    <None Include="SiteTemplates\Features\ClassSiteTemplateWelcomePage\ClassSiteTemplateWelcomePage.Feature" />
+    <None Include="SiteTemplates\Features\ClassSiteTemplate\ClassSiteTemplate.Feature" />
+    <None Include="SiteTemplates\Features\CourseSiteTemplateStamp\CourseSiteTemplateStamp.Feature" />
+    <None Include="SiteTemplates\Features\CourseSiteTemplateWelcomePage\CourseSiteTemplateWelcomePage.Feature" />
+    <None Include="SiteTemplates\Features\CourseSiteTemplate\CourseSiteTemplate.Feature" />
+    <None Include="SiteTemplates\Features\YearClassSiteTemplateStamp\YearClassSiteTemplateStamp.Feature" />
+    <None Include="SiteTemplates\Features\YearClassSiteTemplateWelcomePage\YearClassSiteTemplateWelcomePage.Feature" />
+    <None Include="SiteTemplates\Features\YearClassSiteTemplate\YearClassSiteTemplate.Feature" />
+    <None Include="SiteTemplates\Features\YearSiteTemplateStamp\YearSiteTemplateStamp.Feature" />
+    <None Include="SiteTemplates\Features\YearSiteTemplateWelcomePage\YearSiteTemplateWelcomePage.Feature" />
+    <None Include="SiteTemplates\Features\YearSiteTemplate\YearSiteTemplate.Feature" />
+    <None Include="SiteTemplates\Pages\ClassSiteTemplatePublishingPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{50154b5b-e653-4078-b31d-fe5891e2e195}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\ClassSiteTemplateWebPartPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{73cee9cd-d93c-40a4-8d74-809b1fd59825}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\ClassSiteTemplateWikiPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1187e907-65e1-45ca-b263-b19aeb786d50}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\CourseSiteTemplatePublishingPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1cfa49f7-d7e5-4878-8fe8-2d7993771a4f}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\CourseSiteTemplateWebPartPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{e6c8d9ce-5115-49ed-b013-dd23bfcc1a6d}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\CourseSiteTemplateWikiPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{31ce5d98-1415-43d9-af20-149fdcd67092}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearClassSiteTemplatePublishingPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{efb9d507-de82-40a3-9365-5925ab6302a9}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearClassSiteTemplateWebPartPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{63bf6b61-3d99-4c7f-9a4f-1b2d46dbd842}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearClassSiteTemplateWikiPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{388b6d90-bdbc-4030-af74-b61030f02fc8}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearSiteTemplatePublishingPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2b4ddcbe-0471-4d32-b02e-a49a79a3685a}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearSiteTemplateWebPartPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{72ea3a0e-b660-422f-a087-8cb5ed7fff4c}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\Pages\YearSiteTemplateWikiPage\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{bda119b5-ef23-4418-9311-6138842ed48a}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\YearClassSiteTemplate\YearClassSiteTemplateStamp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{14098e0f-36dd-47dd-a120-dc9e3743940c}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\YearClassSiteTemplate\YearClassSiteTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{fcfd455c-14b7-4ef7-a937-c46e7d5296cd}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\YearSiteTemplate\YearSiteTemplateStamp\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5e4028f9-595d-47c5-9196-7da82d6e8d90}</SharePointProjectItemId>
+    </None>
+    <None Include="SiteTemplates\YearSiteTemplate\YearSiteTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{91dee44d-49c5-4dc5-a620-675f8558b41c}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\VepGenerate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{c3db6b9f-d0d4-4842-bd4a-89529782b409}</SharePointProjectItemId>
+    </None>
+    <None Include="WebParts\VepGenerate\VepGenerate.webpart" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Features\Modules\Modules.Template.xml">
+      <DependentUpon>Modules.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\SiteSandBoxWebParts\SiteSandBoxWebParts.Template.xml">
+      <DependentUpon>SiteSandBoxWebParts.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\SiteReceivers\SiteReceivers.Template.xml">
+      <DependentUpon>SiteReceivers.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\SiteColumns\Resources.pt-PT.resx" />
+    <Content Include="Features\SiteTemplates\SiteTemplates.Template.xml">
+      <DependentUpon>SiteTemplates.feature</DependentUpon>
+    </Content>
+    <Content Include="ModuleSPEduQuickStart\JS\SPEduQuickStart\jquery-1.8.1.min.js" />
+    <Content Include="ModuleSPEduQuickStart\Elements.xml" />
+    <Content Include="WebParts\VepGenerate\Elements.xml" />
+    <Content Include="WebParts\VepGenerate\VepGenerate.ascx">
+      <Generator>SharePointWebPartCodeGenerator</Generator>
+      <LastGenOutput>VepGenerate.ascx.g.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Features\SiteContentTypes\SiteContentTypes.Template.xml">
+      <DependentUpon>SiteContentTypes.feature</DependentUpon>
+    </Content>
+    <Content Include="Features\SiteColumns\SiteColumns.Template.xml">
+      <DependentUpon>SiteColumns.feature</DependentUpon>
+    </Content>
+    <Content Include="Receivers\ListsEventReceiver\Elements.xml" />
+    <Content Include="SiteColumns\SiteColums\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="SiteContentTypes\ClassContentType\Elements.xml" />
+    <Content Include="SiteContentTypes\CourseContentType\Elements.xml" />
+    <Content Include="SiteContentTypes\YearContentType\Elements.xml" />
+    <Content Include="SiteContentTypes\YearForClassContentType\Elements.xml" />
+    <Content Include="SiteTemplates\ClassSiteTemplate\ClassSiteTemplateStamp\Elements.xml" />
+    <Content Include="SiteTemplates\ClassSiteTemplate\ClassSiteTemplate\Elements.xml" />
+    <Content Include="SiteTemplates\ClassSiteTemplate\ClassSiteTemplate\onet.xml" />
+    <Content Include="SiteTemplates\CourseSiteTemplate\CourseSiteTemplateStamp\Elements.xml" />
+    <Content Include="SiteTemplates\CourseSiteTemplate\CourseSiteTemplate\Elements.xml" />
+    <Content Include="SiteTemplates\CourseSiteTemplate\CourseSiteTemplate\onet.xml" />
+    <Content Include="SiteTemplates\Features\ClassSiteTemplateStamp\ClassSiteTemplateStamp.Template.xml">
+      <DependentUpon>ClassSiteTemplateStamp.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\ClassSiteTemplateWelcomePage\ClassSiteTemplateWelcomePage.Template.xml">
+      <DependentUpon>ClassSiteTemplateWelcomePage.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\ClassSiteTemplate\ClassSiteTemplate.Template.xml">
+      <DependentUpon>ClassSiteTemplate.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\CourseSiteTemplateStamp\CourseSiteTemplateStamp.Template.xml">
+      <DependentUpon>CourseSiteTemplateStamp.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\CourseSiteTemplateWelcomePage\CourseSiteTemplateWelcomePage.Template.xml">
+      <DependentUpon>CourseSiteTemplateWelcomePage.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\CourseSiteTemplate\CourseSiteTemplate.Template.xml">
+      <DependentUpon>CourseSiteTemplate.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearClassSiteTemplateStamp\YearClassSiteTemplateStamp.Template.xml">
+      <DependentUpon>YearClassSiteTemplateStamp.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearClassSiteTemplateWelcomePage\YearClassSiteTemplateWelcomePage.Template.xml">
+      <DependentUpon>YearClassSiteTemplateWelcomePage.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearClassSiteTemplate\YearClassSiteTemplate.Template.xml">
+      <DependentUpon>YearClassSiteTemplate.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearSiteTemplateStamp\YearSiteTemplateStamp.Template.xml">
+      <DependentUpon>YearSiteTemplateStamp.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearSiteTemplateWelcomePage\YearSiteTemplateWelcomePage.Template.xml">
+      <DependentUpon>YearSiteTemplateWelcomePage.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Features\YearSiteTemplate\YearSiteTemplate.Template.xml">
+      <DependentUpon>YearSiteTemplate.Feature</DependentUpon>
+    </Content>
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplatePublishingPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplatePublishingPage\TemplatePage.aspx" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWebPartPage\default.aspx" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWebPartPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWebPartPage\wkpstd.aspx" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWikiPage\default.aspx" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWikiPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\ClassSiteTemplateWikiPage\wkpstd.aspx" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplatePublishingPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplatePublishingPage\TemplatePage.aspx" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplateWebPartPage\default.aspx" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplateWebPartPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplateWikiPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\CourseSiteTemplateWikiPage\wkpstd.aspx" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplatePublishingPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplatePublishingPage\TemplatePage.aspx" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplateWebPartPage\default.aspx" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplateWebPartPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplateWikiPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearClassSiteTemplateWikiPage\wkpstd.aspx" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplatePublishingPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplatePublishingPage\TemplatePage.aspx" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplateWebPartPage\default.aspx" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplateWebPartPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplateWikiPage\Elements.xml" />
+    <Content Include="SiteTemplates\Pages\YearSiteTemplateWikiPage\wkpstd.aspx" />
+    <Content Include="SiteTemplates\YearClassSiteTemplate\YearClassSiteTemplateStamp\Elements.xml" />
+    <Content Include="SiteTemplates\YearClassSiteTemplate\YearClassSiteTemplate\Elements.xml" />
+    <Content Include="SiteTemplates\YearClassSiteTemplate\YearClassSiteTemplate\onet.xml" />
+    <Content Include="SiteTemplates\YearSiteTemplate\YearSiteTemplateStamp\Elements.xml" />
+    <Content Include="SiteTemplates\YearSiteTemplate\YearSiteTemplate\Elements.xml" />
+    <Content Include="SiteTemplates\YearSiteTemplate\YearSiteTemplate\onet.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="false" />
+</Project>

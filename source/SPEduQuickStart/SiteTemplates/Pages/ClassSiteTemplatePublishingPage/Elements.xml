@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="ClassSiteTemplatePublishingPage" Url="$Resources:osrvcore,List_Pages_UrlName;">
+    <File Url="default.aspx" Path="ClassSiteTemplatePublishingPage\TemplatePage.aspx" Type="GhostableInLibrary">
+      <Property Name="ContentType" Value="$Resources:cmscore,contenttype_welcomepage_name;" />
+      <Property Name="PublishingPageLayout" Value="~SiteCollection/_catalogs/masterpage/WelcomeSplash.aspx, $Resources:cmscore,PageLayout_WelcomeSplash_Title;" />
+      <Property Name="Title" Value="$Resources:cmscore,IPPT_HomeWelcomePage_Title;" />
+    </File>
+  </Module>
+</Elements>

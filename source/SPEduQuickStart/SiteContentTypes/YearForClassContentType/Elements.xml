@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ContentType ID="0x0100437549A34C4E4b97A8C6805B87402D63" 
+               Name="Year for Class ContentType" 
+               Description="Year that change when new School Year begin"
+               Group="DevScope SPEduQuickStart Office 365 Content Types"
+               Version="9" Inherits="FALSE">
+    <FieldRefs>
+      <FieldRef ID="{DCB7B703-75FD-4534-8FBE-ADA2FB1099FD}" Name="YearClassName" Required="TRUE" />
+      <FieldRef ID="{DE0D021A-2A86-4fc4-AD58-7E62B59314D3}" Name="YearClassCode" Required="TRUE" />
+      <FieldRef ID="{5B3E3E69-BE4B-4dac-9B29-6C73E2B5C51A}" Name="YearClassSiteUrl" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

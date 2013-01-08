@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="YearClassSiteTemplateWebPartPage" Url="" Path="">
+    <File Url="default.aspx" Path="YearClassSiteTemplateWebPartPage\default.aspx" NavBarHome="True" Type="Ghostable">
+      <NavBarPage Name="$Resources:core,nav_Home;" Url="~site" ID="1002" Position="Start" />
+      <NavBarPage Name="$Resources:core,nav_Home;" Url="" ID="0" Position="Start" />
+    </File>
+  </Module>
+</Elements>

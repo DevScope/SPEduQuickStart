@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ContentType ID="0x01005F26B351652DF94F8ED88F2127F914FD" Name="Course ContentType" 
+               Description="Course Content Type"
+               Group="DevScope SPEduQuickStart Office 365 Content Types"
+               Version="9" Inherits="FALSE">
+    <FieldRefs>
+      <FieldRef ID="{055173e5-273c-4511-be94-59f863d346ca}" Name="CourseName" Required="TRUE" />
+      <FieldRef ID="{65de2b78-c273-4fdf-bcf2-b95307cba7a4}" Name="CourseCode" Required="TRUE" />
+      <FieldRef ID="{dcf9ce5d-7eef-4479-ab84-f71087c1c60b}" Name="CourseTeacher" />
+      <FieldRef ID="{d84f8970-9dac-40e3-a5e0-b9eac24a0e80}" Name="CourseDirector" />
+      <FieldRef ID="{eec6e334-c6f9-438a-8b52-be249804cda0}" Name="CourseStudents" />
+      <FieldRef ID="{fcf94b74-b833-4af9-93c3-f88e0444abaa}" Name="CourseSiteUrl" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

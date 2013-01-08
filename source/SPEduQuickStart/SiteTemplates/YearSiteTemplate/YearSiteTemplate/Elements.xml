@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <WebTemplate
+    Name="YearSiteTemplate"
+    BaseTemplateName="STS"
+    BaseTemplateID="1"
+    BaseConfigurationID="0"
+    Title="Site de Ano Letivo"
+    Description=""
+    DisplayCategory="Education Accelerators"
+    Locale="2070"
+		ImageUrl="/_layouts/images/stts.png"/>
+</Elements>

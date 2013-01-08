@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="ClassSiteTemplateWebPartPage" Url="" Path="">
+    <File Url="ClassSiteTemplateWebPartPage\default.aspx" Path="ClassSiteTemplateWebPartPage\default.aspx" NavBarHome="True" Type="Ghostable">
+      <NavBarPage Name="$Resources:core,nav_Home;" ID="1002" Position="Start" />
+      <NavBarPage Name="$Resources:core,nav_Home;" ID="0" Position="Start" />
+    </File>
+  <!--<File Path="ClassSiteTemplateWebPartPage\wkpstd.aspx" Url="ClassSiteTemplateWebPartPage/wkpstd.aspx" />-->
+</Module>
+</Elements>

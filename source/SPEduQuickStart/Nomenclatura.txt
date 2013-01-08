@@ -1,0 +1,4 @@
+Class		- Turma
+Course		- Disciplina
+Year		- Ano Letivo
+YearClass	- Ano Curricular

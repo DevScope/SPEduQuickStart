@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="YearSiteTemplateWikiPage">
+    <File Path="YearSiteTemplateWikiPage\wkpstd.aspx" Url="SitePages/Home.aspx">
+      <NavBarPage Name="$Resources:core,nav_Home;" ID="1002" Position="Start"/>
+      <Property Name="WikiField" Type="string" Value="
+&lt;div class=&quot;ExternalClass2BF5B802113D4BE08BD9FC6D12E045A7&quot;&gt;
+    &lt;table id=&quot;layoutsTable&quot; style=&quot;width: 100%&quot;&gt;
+        &lt;tbody&gt;
+            &lt;tr style=&quot;vertical-align: top&quot;&gt;
+                &lt;td style=&quot;width: 66.6%&quot;&gt;
+                    &lt;div class=&quot;ms-rte-layoutszone-outer&quot; style=&quot;width: 100%&quot;&gt;
+                        &lt;div class=&quot;ms-rte-layoutszone-inner&quot;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+                &lt;td style=&quot;width: 33.3%&quot;&gt;
+                    &lt;div class=&quot;ms-rte-layoutszone-outer&quot; style=&quot;width: 100%&quot;&gt;
+                        &lt;div class=&quot;ms-rte-layoutszone-inner&quot;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;span id=&quot;layoutsData&quot; style=&quot;display: none&quot;&gt;false,false,2&lt;/span&gt;
+&lt;/div&gt;
+"/>
+    </File>
+  </Module>
+</Elements>

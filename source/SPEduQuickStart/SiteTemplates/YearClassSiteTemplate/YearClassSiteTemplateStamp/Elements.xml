@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <PropertyBag ParentType="Web">
+    <Property Name="WebTemplateId" Type="string" Value="YearClassSiteTemplate" />
+    <Property Name="WebTemplateVersion" Type="string" Value="1.0.0.0"/>
+  </PropertyBag>
+</Elements>

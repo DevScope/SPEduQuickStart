@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documenter", "Documenter", "{490E2566-D57D-45F9-8DCD-2DDC441D6450}"
+	ProjectSection(SolutionItems) = preProject
+		Nomenclatura.txt = Nomenclatura.txt
+		O365SampleDataV2.zip = O365SampleDataV2.zip
+		..\..\..\..\..\Users\Administrator\Desktop\Template Name.docx = ..\..\..\..\..\Users\Administrator\Desktop\Template Name.docx
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPEduQuickStart", "SPEduQuickStart.csproj", "{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://team.devscope.net:8080/tfs/productscollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = SPEduQuickStart.csproj
+		SccLocalPath1 = .
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4235083F-267A-4CAB-88A3-E6B6EA91FC2D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

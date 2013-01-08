@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="ModuleSPEduQuickStart">
+  <File Path="ModuleSPEduQuickStart\JS\SPEduQuickStart\jquery-1.8.1.min.js" Url="JS/SPEduQuickStart/jquery-1.8.1.min.js" />
+</Module>
+</Elements>
