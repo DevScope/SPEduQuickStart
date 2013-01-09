@@ -42,31 +42,33 @@ namespace SPEduQuickStart.WebParts.AutocompleteSugestionTemplate {
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n<script type=\"text/javascript\">\r\n    var clientContext = null;\r\n    var web = n" +
                         "ull;\r\n  \r\n    function GetWebTemplates() {\r\n\r\n        var context = new SP.Clien" +
-                        "tContext.get_current();\r\n\r\n        var website = context.get_web();\r\n        var" +
-                        " languageId = website.get_language();\r\n        //alert(languageId);\r\n        thi" +
-                        "s.templateCollection = web.getAvailableWebTemplates(languageId, false);\r\n       " +
-                        " this.templateCollection = website.getAvailableWebTemplates(2070, false);\r\n\r\n   " +
-                        "     context.load(templateCollection);\r\n\r\n        context.executeQueryAsync(Func" +
-                        "tion.createDelegate(this, this.success), Function.createDelegate(this, this.fail" +
-                        "ed));\r\n    }\r\n\r\n    function success() {\r\n\r\n        var Templates = \"\";\r\n\r\n     " +
-                        "   var siteTemplatesEnum = templateCollection.getEnumerator();\r\n\r\n        this.a" +
-                        "vailableTags = [];\r\n\r\n        while (siteTemplatesEnum.moveNext()) {\r\n\r\n        " +
-                        "    var siteTemplate = siteTemplatesEnum.get_current();\r\n            availableTa" +
-                        "gs.push(siteTemplate.get_title())\r\n            //Templates +=  + \"-\" + siteTempl" +
-                        "ate.get_name()  +\'\\n\';\r\n\r\n        }\r\n\r\n        //alert(\"Site Templates - \" + \'\\n" +
-                        "\' + Templates);\r\n\r\n    }\r\n\r\n    function failed(sender, args) {\r\n        alert(\"" +
-                        "Failed\");\r\n    }\r\n\r\n\r\n\r\n    function Initialize() {\r\n        clientContext = new" +
-                        " SP.ClientContext.get_current();\r\n        web = clientContext.get_web();\r\n\r\n    " +
-                        "    clientContext.load(web);\r\n        clientContext.executeQueryAsync(Function.c" +
-                        "reateDelegate(this, this.onSuccess),\r\n            Function.createDelegate(this, " +
-                        "this.onFail));\r\n    }\r\n    function onSuccess(sender, args) {\r\n        GetWebTem" +
-                        "plates();\r\n    }\r\n    function onFail(sender, args) {\r\n        showErroNotificat" +
-                        "ion(\'Failed to get list. Error:\' + args.get_message() + \'\\n\' + args.get_stackTra" +
-                        "ce() + \'\');\r\n    }\r\n\r\n\r\n    ExecuteOrDelayUntilScriptLoaded(Initialize, \"sp.js\")" +
-                        ";\r\n    function LoadAutoComplete() {\r\n        $(document).ready(function () {\r\n " +
-                        "           $(\'#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_" +
-                        "ctl00_ctl00_ctl04_ctl00_ctl00_TextField\').autocomplete({\r\n                source" +
-                        ": availableTags\r\n            });\r\n        });\r\n    }\r\n</script>"));
+                        "tContext.get_current();\r\n\r\n        var website = clientContext.get_web();\r\n     " +
+                        "   var languageId = web.get_language();\r\n         this.templateCollection = web." +
+                        "getAvailableWebTemplates(languageId, false);\r\n         clientContext.load(templa" +
+                        "teCollection);\r\n\r\n         clientContext.executeQueryAsync(Function.createDelega" +
+                        "te(this, this.success), Function.createDelegate(this, this.failed));\r\n    }\r\n\r\n " +
+                        "   function success() {\r\n\r\n        var Templates = \"\";\r\n\r\n        var siteTempla" +
+                        "tesEnum = templateCollection.getEnumerator();\r\n\r\n        this.availableTags = []" +
+                        ";\r\n\r\n        while (siteTemplatesEnum.moveNext()) {\r\n\r\n            var siteTempl" +
+                        "ate = siteTemplatesEnum.get_current();\r\n            availableTags.push(siteTempl" +
+                        "ate.get_title())\r\n            //Templates +=  + \"-\" + siteTemplate.get_name()  +" +
+                        "\'\\n\';\r\n\r\n        }\r\n\r\n        //alert(\"Site Templates - \" + \'\\n\' + Templates);\r\n" +
+                        "\r\n    }\r\n\r\n    function failed(sender, args) {\r\n        alert(\"Failed\");\r\n    }\r" +
+                        "\n\r\n\r\n\r\n    function Initialize() {\r\n        clientContext = new SP.ClientContext" +
+                        ".get_current();\r\n        web = clientContext.get_web();\r\n\r\n        clientContext" +
+                        ".load(web);\r\n        clientContext.executeQueryAsync(Function.createDelegate(thi" +
+                        "s, this.onSuccess),\r\n            Function.createDelegate(this, this.onFail));\r\n " +
+                        "   }\r\n    function onSuccess(sender, args) {\r\n        GetWebTemplates();\r\n    }\r" +
+                        "\n    function onFail(sender, args) {\r\n        showErroNotification(\'Failed to ge" +
+                        "t list. Error:\' + args.get_message() + \'\\n\' + args.get_stackTrace() + \'\');\r\n    " +
+                        "}\r\n\r\n\r\n    ExecuteOrDelayUntilScriptLoaded(Initialize, \"sp.js\");\r\n    function L" +
+                        "oadAutoComplete() {\r\n        $(document).ready(function () {\r\n            \r\n\r\n  " +
+                        "              $(\'#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl" +
+                        "03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField\').autocomplete({\r\n                   " +
+                        " source: availableTags\r\n                });\r\n\r\n                $(\'#ctl00_m_g_101" +
+                        "deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl0" +
+                        "0_TextField\').autocomplete({\r\n                    source: availableTags\r\n       " +
+                        "         });\r\n        });\r\n    }\r\n</script>"));
         }
         
         private void InitializeControl() {

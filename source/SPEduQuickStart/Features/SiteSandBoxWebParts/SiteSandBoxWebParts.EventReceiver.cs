@@ -27,10 +27,20 @@ namespace SPEduQuickStart.Features.SiteSandBoxWebParts
                 using (SPWeb web = site.OpenWeb())
                 {
                     string urlFile = "/Lists/IA/EditForm.aspx";
-
+                    string urlFile1 = "/Lists/IA/NewForm.aspx";
                     SPFile file = web.GetFile(urlFile);
 
                     using (SPLimitedWebPartManager webpartMgr = file.GetLimitedWebPartManager(PersonalizationScope.Shared))
+                    {
+
+                        CheckifExists(webpartMgr, "Jquery AutoComplete");
+                        SPEduQuickStart.WebParts.AutocompleteSugestionTemplate.AutocompleteSugestionTemplate wp = new SPEduQuickStart.WebParts.AutocompleteSugestionTemplate.AutocompleteSugestionTemplate();
+                        wp.Title = "Jquery AutoComplete";
+                        webpartMgr.AddWebPart(wp, "Top", 1);
+
+                    }
+                    SPFile file2 = web.GetFile(urlFile1);
+                    using (SPLimitedWebPartManager webpartMgr = file2.GetLimitedWebPartManager(PersonalizationScope.Shared))
                     {
 
                         CheckifExists(webpartMgr, "Jquery AutoComplete");

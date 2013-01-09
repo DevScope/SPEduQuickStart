@@ -14,15 +14,12 @@
 
         var context = new SP.ClientContext.get_current();
 
-        var website = context.get_web();
-        var languageId = website.get_language();
-        //alert(languageId);
-        this.templateCollection = web.getAvailableWebTemplates(languageId, false);
-        this.templateCollection = website.getAvailableWebTemplates(2070, false);
+        var website = clientContext.get_web();
+        var languageId = web.get_language();
+         this.templateCollection = web.getAvailableWebTemplates(languageId, false);
+         clientContext.load(templateCollection);
 
-        context.load(templateCollection);
-
-        context.executeQueryAsync(Function.createDelegate(this, this.success), Function.createDelegate(this, this.failed));
+         clientContext.executeQueryAsync(Function.createDelegate(this, this.success), Function.createDelegate(this, this.failed));
     }
 
     function success() {
@@ -70,9 +67,15 @@
     ExecuteOrDelayUntilScriptLoaded(Initialize, "sp.js");
     function LoadAutoComplete() {
         $(document).ready(function () {
-            $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
-                source: availableTags
-            });
+            
+
+                $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
+                    source: availableTags
+                });
+
+                $('#ctl00_m_g_101deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
+                    source: availableTags
+                });
         });
     }
 </script>
