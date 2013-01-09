@@ -239,8 +239,8 @@
 </script>
 ​
 <div>
-    <h1>Welcome to Webpart Generate WebSites</h1>
-    <h2>Developer by Devscope</h2>
+    <h1>Welcome to Webpart "SPEduQuickStart"</h1>
+    <h2>Take a look at code on <a href="https://github.com/DevScope/SPEduQuickStart" >gitHub</a></h2>
     <div runat="server" id="panel">
         <p><a href="#" onclick="javascript:GenerateSites();">Click Here for Generate Sites Structures</a></p>
     </div>

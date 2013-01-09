@@ -31,20 +31,10 @@ namespace SPEduQuickStart.WebParts.AutocompleteSugestionTemplate
             
             string script = @"<script type='text/javascript'>
                                     $(document).ready(function() { 
-                                        $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').focus(function() {
+                                        this.fields = init_fields_v3();
+                                        var id = $(this.fields['Template'].getElementsByTagName('input')).attr('id');
+                                        $('#'+id).focus(function() {
                                          LoadAutoComplete();
-                                        });
-
-                                        $('#ctl00_m_g_101deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').focus(function() {
-                                         LoadAutoComplete();
-                                        });
-
-                                        $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
-                                                source:availableTags
-                                        });
-
-                                        $('#ctl00_m_g_101deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
-                                                            source: availableTags
                                         });
                                     });
                             </script>";
@@ -54,7 +44,6 @@ namespace SPEduQuickStart.WebParts.AutocompleteSugestionTemplate
 					</script>";
 
             ClientScriptManager scriptext = this.Page.ClientScript;
-            //scriptext.RegisterClientScriptBlock(this.Page.GetType(), "key1", HttpUtility.HtmlDecode(jquery), false);
             scriptext.RegisterClientScriptBlock(this.Page.GetType(), "key2", HttpUtility.HtmlDecode(css), false);
             scriptext.RegisterClientScriptBlock(this.Page.GetType(), "key3", HttpUtility.HtmlDecode(availableTags), false);
             scriptext.RegisterStartupScript(this.Page.GetType(), "key4", HttpUtility.HtmlDecode(script), false);

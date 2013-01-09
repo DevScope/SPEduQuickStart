@@ -166,8 +166,9 @@ namespace SPEduQuickStart.WebParts.VepGenerate {
                         "\r\n            var substring = substrings[i];\r\n            if (substring.startsWi" +
                         "th(str)) {\r\n                return substring;\r\n            }\r\n        }\r\n       " +
                         " return null;\r\n    }\r\n\r\n   \r\n    ExecuteOrDelayUntilScriptLoaded(InitializeGetTe" +
-                        "mplates, \"sp.js\");\r\n    \r\n</script>\r\n​\r\n<div>\r\n    <h1>Welcome to Webpart Genera" +
-                        "te WebSites</h1>\r\n    <h2>Developer by Devscope</h2>\r\n    "));
+                        "mplates, \"sp.js\");\r\n    \r\n</script>\r\n​\r\n<div>\r\n    <h1>Welcome to Webpart \"SPEdu" +
+                        "QuickStart\"</h1>\r\n    <h2>Take a look at code on <a href=\"https://github.com/Dev" +
+                        "Scope/SPEduQuickStart\" >gitHub</a></h2>\r\n    "));
             global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl1;
             @__ctrl1 = this.@__BuildControlpanel();
             @__parser.AddParsedSubObject(@__ctrl1);

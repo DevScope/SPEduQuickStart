@@ -41,34 +41,48 @@ namespace SPEduQuickStart.WebParts.AutocompleteSugestionTemplate {
         private void @__BuildControlTree(global::SPEduQuickStart.WebParts.AutocompleteSugestionTemplate.AutocompleteSugestionTemplate @__ctrl) {
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n<script type=\"text/javascript\">\r\n    var clientContext = null;\r\n    var web = n" +
-                        "ull;\r\n  \r\n    function GetWebTemplates() {\r\n\r\n        var context = new SP.Clien" +
-                        "tContext.get_current();\r\n\r\n        var website = clientContext.get_web();\r\n     " +
-                        "   var languageId = web.get_language();\r\n         this.templateCollection = web." +
-                        "getAvailableWebTemplates(languageId, false);\r\n         clientContext.load(templa" +
-                        "teCollection);\r\n\r\n         clientContext.executeQueryAsync(Function.createDelega" +
-                        "te(this, this.success), Function.createDelegate(this, this.failed));\r\n    }\r\n\r\n " +
-                        "   function success() {\r\n\r\n        var Templates = \"\";\r\n\r\n        var siteTempla" +
-                        "tesEnum = templateCollection.getEnumerator();\r\n\r\n        this.availableTags = []" +
-                        ";\r\n\r\n        while (siteTemplatesEnum.moveNext()) {\r\n\r\n            var siteTempl" +
-                        "ate = siteTemplatesEnum.get_current();\r\n            availableTags.push(siteTempl" +
-                        "ate.get_title())\r\n            //Templates +=  + \"-\" + siteTemplate.get_name()  +" +
-                        "\'\\n\';\r\n\r\n        }\r\n\r\n        //alert(\"Site Templates - \" + \'\\n\' + Templates);\r\n" +
-                        "\r\n    }\r\n\r\n    function failed(sender, args) {\r\n        alert(\"Failed\");\r\n    }\r" +
-                        "\n\r\n\r\n\r\n    function Initialize() {\r\n        clientContext = new SP.ClientContext" +
-                        ".get_current();\r\n        web = clientContext.get_web();\r\n\r\n        clientContext" +
-                        ".load(web);\r\n        clientContext.executeQueryAsync(Function.createDelegate(thi" +
-                        "s, this.onSuccess),\r\n            Function.createDelegate(this, this.onFail));\r\n " +
-                        "   }\r\n    function onSuccess(sender, args) {\r\n        GetWebTemplates();\r\n    }\r" +
-                        "\n    function onFail(sender, args) {\r\n        showErroNotification(\'Failed to ge" +
-                        "t list. Error:\' + args.get_message() + \'\\n\' + args.get_stackTrace() + \'\');\r\n    " +
-                        "}\r\n\r\n\r\n    ExecuteOrDelayUntilScriptLoaded(Initialize, \"sp.js\");\r\n    function L" +
-                        "oadAutoComplete() {\r\n        $(document).ready(function () {\r\n            \r\n\r\n  " +
-                        "              $(\'#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl" +
-                        "03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField\').autocomplete({\r\n                   " +
-                        " source: availableTags\r\n                });\r\n\r\n                $(\'#ctl00_m_g_101" +
-                        "deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl0" +
-                        "0_TextField\').autocomplete({\r\n                    source: availableTags\r\n       " +
-                        "         });\r\n        });\r\n    }\r\n</script>"));
+                        "ull;\r\n    var fields = null;\r\n    function GetWebTemplates() {\r\n         var con" +
+                        "text = new SP.ClientContext.get_current();\r\n         var website = clientContext" +
+                        ".get_web();\r\n         var languageId = web.get_language();\r\n         this.templa" +
+                        "teCollection = web.getAvailableWebTemplates(languageId, false);\r\n         client" +
+                        "Context.load(templateCollection);\r\n         clientContext.executeQueryAsync(Func" +
+                        "tion.createDelegate(this, this.success), Function.createDelegate(this, this.fail" +
+                        "ed));\r\n    }\r\n\r\n    function success() {\r\n        var Templates = \"\";\r\n        v" +
+                        "ar siteTemplatesEnum = templateCollection.getEnumerator();\r\n        this.availab" +
+                        "leTags = [];\r\n        while (siteTemplatesEnum.moveNext()) {\r\n            var si" +
+                        "teTemplate = siteTemplatesEnum.get_current();\r\n            availableTags.push(si" +
+                        "teTemplate.get_title())\r\n            //Templates +=  siteTemplate.get_title()+ \"" +
+                        "-\" + siteTemplate.get_name()  +\'\\n\';\r\n        }\r\n    }\r\n\r\n    function failed(se" +
+                        "nder, args) {\r\n        alert(\"Failed when obtain internal Websites Templates.\");" +
+                        "\r\n    }\r\n\r\n    function Initialize() {\r\n        clientContext = new SP.ClientCon" +
+                        "text.get_current();\r\n        web = clientContext.get_web();\r\n\r\n        clientCon" +
+                        "text.load(web);\r\n        clientContext.executeQueryAsync(Function.createDelegate" +
+                        "(this, this.onSuccess),\r\n            Function.createDelegate(this, this.onFail))" +
+                        ";\r\n    }\r\n    function onSuccess(sender, args) {\r\n        GetWebTemplates();\r\n  " +
+                        "  }\r\n    function onFail(sender, args) {\r\n        showErroNotification(\'Failed t" +
+                        "o get list. Error:\' + args.get_message() + \'\\n\' + args.get_stackTrace() + \'\');\r\n" +
+                        "    }\r\n\r\n\r\n    ExecuteOrDelayUntilScriptLoaded(Initialize, \"sp.js\");\r\n\r\n\r\n    fu" +
+                        "nction LoadAutoComplete() {\r\n        $(document).ready(function () {\r\n          " +
+                        "  this.fields = init_fields_v3();\r\n            var id = $(this.fields[\'Template\'" +
+                        "].getElementsByTagName(\'input\')).attr(\'id\');\r\n\r\n                $(\'#\' + id).auto" +
+                        "complete({\r\n                    source: availableTags\r\n                });\r\n    " +
+                        "    });\r\n    }\r\n\r\n    function init_fields_v3() {\r\n        var toFind, res, myMa" +
+                        "tch, disp, fin, type\r\n        res = {};\r\n        toFind = \"td.ms-formbody\";\r\n   " +
+                        "     if ($(\"td.ms-formbodysurvey\").length > 0) {\r\n            toFind = \"td.ms-fo" +
+                        "rmbodysurvey\";\r\n        }\r\n        $(toFind).each(function () {\r\n            myM" +
+                        "atch = $(this).html().match(/FieldName=\"(.+)\"\\s+FieldInternalName=\"(.+)\"\\s+Field" +
+                        "Type=\"(.+)\"\\s+/);\r\n            if (myMatch != null) {\r\n                disp = my" +
+                        "Match[1];\r\n                fin = myMatch[2];\r\n                type = myMatch[3];" +
+                        "\r\n                if (type == \'SPFieldNote\') {\r\n                    if ($(this)." +
+                        "find(\'script\').length > 0) {\r\n                        type = type + \"_HTML\";\r\n  " +
+                        "                  } else if ($(this).find(\"div[id$=\'_TextField_inplacerte\']\").le" +
+                        "ngth > 0) {\r\n                        type = type + \"_EHTML\";\r\n                  " +
+                        "  }\r\n                }\r\n                if (type == \'SPFieldLookup\') {\r\n        " +
+                        "            if ($(this).find(\'input\').length > 0) {\r\n                        typ" +
+                        "e = type + \"_Input\";\r\n                    }\r\n                }\r\n                " +
+                        "res[fin] = this.parentNode;\r\n                $(res[fin]).attr(\'FieldDispName\', d" +
+                        "isp);\r\n                $(res[fin]).attr(\'FieldType\', type);\r\n            }\r\n    " +
+                        "    });\r\n        return res;\r\n    }\r\n</script>\r\n\r\n"));
         }
         
         private void InitializeControl() {
