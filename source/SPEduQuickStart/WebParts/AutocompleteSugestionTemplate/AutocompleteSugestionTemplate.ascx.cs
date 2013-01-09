@@ -34,8 +34,17 @@ namespace SPEduQuickStart.WebParts.AutocompleteSugestionTemplate
                                         $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').focus(function() {
                                          LoadAutoComplete();
                                         });
+
+                                        $('#ctl00_m_g_101deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').focus(function() {
+                                         LoadAutoComplete();
+                                        });
+
                                         $('#ctl00_m_g_053f256c_889e_4cf4_b980_838ed1fcc5a6_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
                                                 source:availableTags
+                                        });
+
+                                        $('#ctl00_m_g_101deaa4_29e0_4d62_9440_bfed1295f62e_ctl00_ctl05_ctl03_ctl00_ctl00_ctl04_ctl00_ctl00_TextField').autocomplete({
+                                                            source: availableTags
                                         });
                                     });
                             </script>";
