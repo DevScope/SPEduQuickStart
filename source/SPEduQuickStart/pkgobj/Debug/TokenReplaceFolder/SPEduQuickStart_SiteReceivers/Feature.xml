@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="Education Accelerators for Office 365 Site Receivers" Id="9974b50d-f5d4-406b-ba12-0b1ae5658127" Scope="Site" Title="Education Accelerators for Office 365 Site Receivers">
+  <ElementManifests>
+    <ElementManifest Location="ListsEventReceiver\Elements.xml" />
+  </ElementManifests>
+</Feature>

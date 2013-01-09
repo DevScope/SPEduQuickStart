@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ContentType ID="0x0100744843AEBB7E4684AF55C816BFFA7496" Name="Class ContentType" 
+               Description="Class Content Type" 
+               Group="DevScope SPEduQuickStart Office 365 Content Types" 
+               Version="9" Inherits="FALSE">
+    <FieldRefs>
+      <FieldRef ID="{961B3C68-E8CA-4f17-A27E-9F9B9B98F8AB}" Name="ClassName" Required="TRUE" />
+      <FieldRef ID="{E7B41C3F-F3B9-4e41-B129-EE0C700CB798}" Name="ClassCode" Required="TRUE" />
+      <FieldRef ID="{AE0331FA-0F4A-4ef3-ACE5-7AEA50A16A56}" Name="ClassStudents" />
+      <FieldRef ID="{888BFC8F-B44F-44cc-B9B2-61448841D4F8}" Name="ClassSiteUrl" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

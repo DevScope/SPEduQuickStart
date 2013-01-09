@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+
+  <!-- For Information Architecture Columns List -->
+  <Field Type="Text" DisplayName="Root"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{3DF2DC58-5A30-4DDD-9A8E-CEAA538FF87E}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Root" Name="Root" Customization="" />
+  <Field Type="Text" DisplayName="Curricular Year"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{8F9C0ECC-922E-4B14-BA5A-B54D16FA990A}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CurricularYear" Name="CurricularYear" Customization="" />
+  <Field Type="Text" DisplayName="Template for Web"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{41CEB248-C617-45C8-ABEC-483F851101B8}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Template" Name="Template" Customization="" />
+  <Field Type="Text" DisplayName="Site Description"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{0F5E368D-2F21-4415-9CAE-913873005FB3}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="SiteDescription" Name="SiteDescription" Customization="" />
+  <Field Type="Text" DisplayName="Code"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{EAF5C55A-8813-41CA-ABEF-837CA157C41E}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Code" Name="Code" Customization="" />
+  <Field Type="Text" DisplayName="Parent"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{F30255EB-0FE8-4240-A14E-FEE5D546EFEF}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Parent" Name="Parent" Customization="" />
+  <Field Type="Choice" DisplayName="Visible By" Required="FALSE" Format="Dropdown" 
+         FillInChoice="FALSE" Name="VisibleBy" ID="{F94E875A-4264-4F58-9339-F8B457C75287}">
+    <CHOICES>
+      <CHOICE>Anonymous</CHOICE>
+      <CHOICE>AuthenticatedUsers</CHOICE>
+      <CHOICE>Teachers</CHOICE>
+      <CHOICE>Employees</CHOICE>
+      <CHOICE>SharepointAdminsOnly</CHOICE>
+    </CHOICES>
+    <Default>Anonymous</Default>
+  </Field>
+  <Field Type="URL" DisplayName="Url"
+        Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+        Group="Education Accelerators for Office 365 Columns" ID="{6AF3F35C-23EF-4F59-A9E1-B685793DAB13}"
+        SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Url" Name="Url" ReadOnly="TRUE" Customization="" />
+
+  <!-- Course (Disciplina) -->
+  <Field Type="Text" DisplayName="$Resources:Course;"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{055173e5-273c-4511-be94-59f863d346ca}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CourseName" Name="CourseName" Customization="" />
+  <Field Type="Text" DisplayName="$Resources:CourseCode"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{65de2b78-c273-4fdf-bcf2-b95307cba7a4}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CourseCode" Name="CourseCode" Customization="" />
+  <Field Type="User" DisplayName="$Resources:Teacher" List="UserInfo"
+         Required="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0"
+         Group="Education Accelerators for Office 365 Columns" ID="{dcf9ce5d-7eef-4479-ab84-f71087c1c60b}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="Teacher" Name="Teacher" Customization="" />
+  <Field Type="User" DisplayName="$Resources:CourseDirector" List="UserInfo"
+         Required="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0"
+         Group="Education Accelerators for Office 365 Columns" ID="{d84f8970-9dac-40e3-a5e0-b9eac24a0e80}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CourseDirector" Name="CourseDirector" Customization="" />
+  <Field Type="UserMulti" DisplayName="$Resources:CourseStudents" List="UserInfo"
+         Required="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0"
+         Group="Education Accelerators for Office 365 Columns" ID="{eec6e334-c6f9-438a-8b52-be249804cda0}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CourseStudents" Name="CourseStudents" Mult="TRUE" Sortable="FALSE" Version="1" />
+  <Field Type="URL" DisplayName="$Resources:CourseSiteUrl" ShowInNewForm="FALSE"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink"
+         Group="Education Accelerators for Office 365 Columns" ID="{fcf94b74-b833-4af9-93c3-f88e0444abaa}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="CourseSiteUrl" Name="CourseSiteUrl" Customization="" />
+
+  <!-- Class (Turma) -->
+  <Field Type="Text" DisplayName="Turma"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{961B3C68-E8CA-4f17-A27E-9F9B9B98F8AB}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ClassName" Name="ClassName" Customization="" />
+  <Field Type="Text" DisplayName="Código da Turma"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{E7B41C3F-F3B9-4e41-B129-EE0C700CB798}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ClassCode" Name="ClassCode" Customization="" />
+  <Field Type="UserMulti" DisplayName="Alunos da Turma" List="UserInfo"
+         Required="FALSE" ShowField="ImnName" UserSelectionMode="PeopleOnly" UserSelectionScope="0"
+         Group="Education Accelerators for Office 365 Columns" ID="{AE0331FA-0F4A-4ef3-ACE5-7AEA50A16A56}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ClassStudents" Name="ClassStudents" Mult="TRUE" Sortable="FALSE" Version="1" />
+  <Field Type="URL" DisplayName="Site da Turma" ShowInNewForm="FALSE"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink"
+         Group="Education Accelerators for Office 365 Columns" ID="{888BFC8F-B44F-44cc-B9B2-61448841D4F8}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="ClassSiteUrl" Name="ClassSiteUrl" Customization="" />
+
+  <!-- YearClass (Ano Curricular Ex: 9.º, 10.º ...) -->
+  <Field Type="Text" DisplayName="Ano curricular"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{DCB7B703-75FD-4534-8FBE-ADA2FB1099FD}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="YearClassName" Name="YearClassName" Customization="" />
+  <Field Type="Text" DisplayName="Código do Ano Curricular"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{DE0D021A-2A86-4fc4-AD58-7E62B59314D3}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="YearClassCode" Name="YearClassCode" Customization="" />
+  <Field Type="URL" DisplayName="Site do Ano Curricular" ShowInNewForm="FALSE"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink"
+         Group="Education Accelerators for Office 365 Columns" ID="{5B3E3E69-BE4B-4dac-9B29-6C73E2B5C51A}"
+         SourceID="{5B3E3E69-BE4B-4dac-9B29-6C73E2B5C51A}" StaticName="YearClassSiteUrl" Name="YearClassSiteUrl" Customization="" />
+
+  <!-- YearForClass (Ano Letivo Ex: 2012/2013 -->
+  <Field Type="Text" DisplayName="Ano Letivo"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{FEA1DA6C-E511-4081-9556-C96B7963C29E}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="YearName" Name="YearName" Customization="" />
+  <Field Type="Text" DisplayName="Código do Ano Letivo"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255"
+         Group="Education Accelerators for Office 365 Columns" ID="{85A7E140-2287-46e7-B645-87D665AF8DCA}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="YearCode" Name="YearCode" Customization="" />
+  <Field Type="URL" DisplayName="Site do Ano Letivo" ShowInNewForm="FALSE"
+         Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" Format="Hyperlink"
+         Group="Education Accelerators for Office 365 Columns" ID="{C896FB76-2565-493f-8C11-DADD730826B6}"
+         SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="YearSiteUrl" Name="YearSiteUrl" Customization="" />
+</Elements>
+

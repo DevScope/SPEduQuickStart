@@ -3,5 +3,7 @@
   <Files>
     <ProjectItemFile Source="Elements.xml" Target="ModuleSPEduQuickStart\" Type="ElementManifest" />
     <ProjectItemFile Source="JS\SPEduQuickStart\jquery-1.8.1.min.js" Target="ModuleSPEduQuickStart\JS\SPEduQuickStart\" Type="ElementFile" />
+    <ProjectItemFile Source="JS\SPEduQuickStart\jquery-ui.js" Target="ModuleSPEduQuickStart\JS\SPEduQuickStart\" Type="ElementFile" />
+    <ProjectItemFile Source="JS\SPEduQuickStart\jquery-ui.css" Target="ModuleSPEduQuickStart\JS\SPEduQuickStart\" Type="ElementFile" />
   </Files>
 </ProjectItem>

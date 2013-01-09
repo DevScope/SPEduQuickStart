@@ -8,6 +8,7 @@ using System.Web.UI.WebControls.WebParts;
 using Microsoft.SharePoint;
 using SPEduQuickStart.Code;
 using System.Web.Services;
+using System.Web;
 
 namespace SPEduQuickStart.WebParts.VepGenerate
 {
@@ -28,7 +29,8 @@ namespace SPEduQuickStart.WebParts.VepGenerate
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            BtnGenerateClick();
+            
         }
 
         /// <summary>
@@ -36,21 +38,25 @@ namespace SPEduQuickStart.WebParts.VepGenerate
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        protected void BtnGenerateClick(object sender, EventArgs e)
+        private void BtnGenerateClick()
         {
             string myScript = @"<script language='javascript'>alert({0});</script>";
             try
             {
-
+               
+                panel.Visible = false;
                 if (!SPGenerateHelpers.ListExists(SPContext.Current.Site.RootWeb, "IA"))
                 {
+                    LblErr.ForeColor = Color.DarkGreen;
+                    LblErr.Text = "Please Wait while List IA was creating....";
+
                     bool setIa = SPGenerateHelpers.SetIa(SPContext.Current.Site.RootWeb);
                     bool setIaView = SPGenerateHelpers.CreateIaListView(SPContext.Current.Site.RootWeb);
                     if (setIa && setIaView)
                     {
-                        LblErr.ForeColor = Color.DarkGreen;
+                      
                         LblErr.Text =
-                            "A Lista de Tecnologia de Informação IA foi Gerada. Preencha a mesma conforme Documentação!...";
+                            "The IA List was succefful created. Please insert or edit items on list IA.";
                         Literal ltrl = new Literal
                         {
                             Text =
@@ -58,19 +64,13 @@ namespace SPEduQuickStart.WebParts.VepGenerate
                         };
                         Controls.Add(ltrl);
                     }
+
+                   
                 }
                 else
                 {
-                    LblErr.ForeColor = Color.DarkGreen;
-                    SitesCreation.Generate();
-
-                    LblErr.Text = "Procedimento Concluido!!...";
-                    //Literal ltrl = new Literal
-                    //{
-                    //    Text =
-                    //        "<script  language='javascript'>window.location.href='/';</script>"
-                    //};
-                    //Controls.Add(ltrl);
+                    LblErr.Text = "";
+                    panel.Visible = true;
                 }
             }
             catch (Exception ex)
@@ -78,6 +78,7 @@ namespace SPEduQuickStart.WebParts.VepGenerate
                 if (Page.ClientScript.IsClientScriptBlockRegistered("DebugScript")) return;
                 myScript = String.Format(myScript, ex);
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "DebugScript", myScript);
+                LblErr.Text = myScript;
             }
         }
 
@@ -140,6 +141,15 @@ namespace SPEduQuickStart.WebParts.VepGenerate
             StringBuilder js = new StringBuilder();
 
             base.RenderContents(writer);
+           
+            //writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/css");
+            //writer.AddAttribute(HtmlTextWriterAttribute.Rel, "/JS/SPEduQuickStart/jquery-ui.css");
+
+
+            //writer.RenderBeginTag(HtmlTextWriterTag.Link);
+            //writer.RenderEndTag();
+
+
 
             writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/javascript");
             writer.AddAttribute(HtmlTextWriterAttribute.Src, "/JS/SPEduQuickStart/jquery-1.8.1.min.js");
@@ -147,6 +157,26 @@ namespace SPEduQuickStart.WebParts.VepGenerate
 
             writer.RenderBeginTag(HtmlTextWriterTag.Script);
             writer.RenderEndTag();
+
+
+            //writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/javascript");
+            //writer.AddAttribute(HtmlTextWriterAttribute.Src, "/JS/SPEduQuickStart/jquery.SPServices-0.5.8.min.js");
+
+
+            //writer.RenderBeginTag(HtmlTextWriterTag.Script);
+            //writer.RenderEndTag();
+
+            writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/javascript");
+            writer.AddAttribute(HtmlTextWriterAttribute.Src, "/JS/SPEduQuickStart/jquery-ui.js");
+
+
+            writer.RenderBeginTag(HtmlTextWriterTag.Script);
+            writer.RenderEndTag();
+
+
+           
+            
+           
 
             //writer.AddAttribute(HtmlTextWriterAttribute.Type, "text/javascript");
             //writer.AddAttribute(HtmlTextWriterAttribute.Type, "function setValue(value){document.getElementById('LblProgress').innerText = value;}");

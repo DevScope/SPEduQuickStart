@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="Education Accelerators for Office 365 Site Columns" Id="2e1e4d25-4a2c-478b-954c-a8d4c18b7f10" Scope="Site" Title="Education Accelerators for Office 365 Site Columns">
+  <ElementManifests>
+    <ElementManifest Location="SiteColums\Elements.xml" />
+    <ElementFile Location="Resources\Resources.pt-PT.resx" />
+  </ElementManifests>
+</Feature>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Receivers ListUrl="Lists/Courses">
+      <Receiver>
+        <Name>ListsEventReceiverItemAdded</Name>
+        <Type>ItemAdded</Type>
+        <Assembly>SPEduQuickStart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4cf35531c8b844c</Assembly>
+        <Class>SPEduQuickStart.Receivers.ListsEventReceiver.ListsEventReceiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+  </Receivers>
+  <Receivers ListUrl="Lists/Year">
+    <Receiver>
+      <Name>ListsEventReceiverItemAdded</Name>
+      <Type>ItemAdded</Type>
+      <Assembly>SPEduQuickStart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4cf35531c8b844c</Assembly>
+      <Class>SPEduQuickStart.Receivers.ListsEventReceiver.ListsEventReceiver</Class>
+      <SequenceNumber>10000</SequenceNumber>
+    </Receiver>
+  </Receivers>
+  <Receivers ListUrl="Lists/Curricular Year">
+    <Receiver>
+      <Name>ListsEventReceiverItemAdded</Name>
+      <Type>ItemAdded</Type>
+      <Assembly>SPEduQuickStart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4cf35531c8b844c</Assembly>
+      <Class>SPEduQuickStart.Receivers.ListsEventReceiver.ListsEventReceiver</Class>
+      <SequenceNumber>10000</SequenceNumber>
+    </Receiver>
+  </Receivers>
+  <Receivers ListUrl="Lists/Classes">
+    <Receiver>
+      <Name>ListsEventReceiverItemAdded</Name>
+      <Type>ItemAdded</Type>
+      <Assembly>SPEduQuickStart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4cf35531c8b844c</Assembly>
+      <Class>SPEduQuickStart.Receivers.ListsEventReceiver.ListsEventReceiver</Class>
+      <SequenceNumber>10000</SequenceNumber>
+    </Receiver>
+  </Receivers>
+</Elements>

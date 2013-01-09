@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="Education Accelerators for Office 365 WebParts" Id="9b8ea554-53c4-489c-beaa-1fd257683b82" Scope="Site" Title="Education Accelerators for Office 365 WebParts">
+  <ElementManifests>
+    <ElementManifest Location="VepGenerate\Elements.xml" />
+    <ElementFile Location="VepGenerate\VepGenerate.webpart" />
+  </ElementManifests>
+</Feature>

@@ -14,9 +14,11 @@
     var li = "";
     var div;
     var lock = true;
+    var arrayTemplates = [];
+    var listItemID = 0;
 
     function showNotification() {
-        strNotificationID = SP.UI.Notify.addNotification("AGUARDE: <font color='#AA0000'>A Processar Informação..</font>", true);
+        strNotificationID = SP.UI.Notify.addNotification("WAITING: <font color='#AA0000'>Processing Data...</font>", true);
     }
 
     function removeNotification() {
@@ -34,23 +36,23 @@
     
     function GenerateSites() {
         div = document.getElementById("lblProgress");
-        ExecuteOrDelayUntilScriptLoaded(Initialize, "sp.js");
+        ExecuteOrDelayUntilScriptLoaded(Load, "sp.js");
     }
 
-    function Initialize() {
-        clientContext = new SP.ClientContext.get_current();
-        web = clientContext.get_web();
+    //function Initialize() {
+    //    clientContext = new SP.ClientContext.get_current();
+    //    web = clientContext.get_web();
         
-        clientContext.load(web);
-        clientContext.executeQueryAsync(Function.createDelegate(this, this.onSuccess),
-            Function.createDelegate(this, this.onFail));
-    }
-    function onSuccess(sender, args) {
-        Load();
-    }
-    function onFail(sender, args) {
-        showErroNotification('Failed to get list. Error:' + args.get_message() + '\n' + args.get_stackTrace() + '');
-    }
+    //    clientContext.load(web);
+    //    clientContext.executeQueryAsync(Function.createDelegate(this, this.onSuccess),
+    //        Function.createDelegate(this, this.onFail));
+    //}
+    //function onSuccess(sender, args) {
+    //    Load();
+    //}
+    //function onFail(sender, args) {
+    //    showErroNotification('Failed to get list. Error:' + args.get_message() + '\n' + args.get_stackTrace() + '');
+    //}
 
 
     function Load() {
@@ -60,7 +62,7 @@
         var q = '<View><RowLimit>1000</RowLimit></View>';
         camlQuery.set_viewXml(q);
         this.listItems = list.getItems(camlQuery);
-        clientContext.load(listItems, 'Include(Title, SiteDescription,SiteTemplate,SiteTemplate_x003a_Code, Root, CurricularYear, Parent, Code, VisibleBy)');
+        clientContext.load(listItems, 'Include(ID,Title, SiteDescription,Template, Root, CurricularYear, Parent, Code, VisibleBy)');
         clientContext.executeQueryAsync(Function.createDelegate(this, this.onListItemsLoadSuccess),
         Function.createDelegate(this, this.onQueryFailed));
 
@@ -99,7 +101,9 @@
             return ""+ item.get_item("Code");
         }
     }
-    
+
+
+    //item.get_item("Template")
 
     function GenerateWeb(item) {
         //debugger;
@@ -113,8 +117,11 @@
             var url = CalculateFinalUrl(item);
             webCreateInfo.set_url(url);
             webCreateInfo.set_useSamePermissionsAsParentSite(true);
-            var templatecode = item.get_item("SiteTemplate_x003a_Code").get_lookupValue();
+            //var templatecode = item.get_item("SiteTemplate_x003a_Code").get_lookupValue();
+            var result = containsAny(item.get_item("Template"), this.arrayTemplates);
+            var templatecode = result.split(';')[1];
             webCreateInfo.set_webTemplate(templatecode);
+            this.listItemID = item.get_item("ID");
             CreateWebsite(webCreateInfo);
         }
         else {
@@ -133,33 +140,50 @@
         
     }
 
-    function onCreateWebSuccess(sender, args) {
-        var html = "<p>Foi criado com sucesso o site <a href='" + location.protocol + "//" + location.host + '' + this.oNewWebsite.get_serverRelativeUrl() + "' >" + this.oNewWebsite.get_title() + "</a></p><br/>";
+    function onCreateWebSuccess(sender, args, id) {
+        var html = "<p>The website was succefull created: <a href='" + location.protocol + "//" + location.host + '' + this.oNewWebsite.get_serverRelativeUrl() + "' >" + this.oNewWebsite.get_title() + "</a></p><br/>";
+        var myDiv = document.getElementById("lblProgress");
+        myDiv.innerHTML += html;
+        var url = location.protocol + "//" + location.host + '' + this.oNewWebsite.get_serverRelativeUrl()
+        UpdateURL(this.listItemID, url);
+        this.lock = true;
+    }
+
+    function onQueryFailed(sender, args) {
+        //showErroNotification('REQUEST FAILED: ' + args.get_message() + '\n' + args.get_stackTrace() + '');
+        var html = "<p>!!Alert!! The creation the site was some problem :" + args.get_message() + "<br/> ::" + args.get_stackTrace() +  "</p><br/>";
         var myDiv = document.getElementById("lblProgress");
         myDiv.innerHTML += html;
         this.lock = true;
     }
 
-    function onQueryFailed(sender, args) {
-        showErroNotification('REQUEST FAILED: ' + args.get_message() + '\n' + args.get_stackTrace() + '');
+
+    function UpdateURL(id,finalurl)
+    {
+        var listIA = web.get_lists().getByTitle("IA");
+        this.listItem = listIA.getItemById(id);
+        this.listItem.set_item("Url", finalurl);
+        this.listItem.update();
+        clientContext.executeQueryAsync(Function.createDelegate(this, this.onUpdSuccess),
+        Function.createDelegate(this, this.onUpdFailed));
     }
 
+    function onUpdSuccess(sender, args) {
+        this.listItemID = 0;
+    }
 
+    function onUpdFailed(sender, args) {
+    }
 
-
+   
     function GetWebTemplates() {
 
-        var context = new SP.ClientContext.get_current();
+        var languageId = this.web.get_language();
+        this.templateCollection = web.getAvailableWebTemplates(languageId, false);
+        
+        clientContext.load(templateCollection);
 
-        var web = context.get_web();
-        //var languageId = web.get_language();
-        //alert(languageId);
-        //this.templateCollection = web.getAvailableWebTemplates(languageId, false);
-        this.templateCollection = web.getAvailableWebTemplates(2070, false);
-
-        context.load(templateCollection);
-
-        context.executeQueryAsync(Function.createDelegate(this, this.success), Function.createDelegate(this, this.failed));
+        clientContext.executeQueryAsync(Function.createDelegate(this, this.success), Function.createDelegate(this, this.failed));
     }
 
     function success() {
@@ -171,35 +195,60 @@
         while (siteTemplatesEnum.moveNext()) {
 
             var siteTemplate = siteTemplatesEnum.get_current();
-
-            Templates += siteTemplate.get_title() + "-" + siteTemplate.get_name()  +'\n';
-
+            var strvalue = siteTemplate.get_title() + ";" + siteTemplate.get_name();
+            //alert(strvalue);
+            this.arrayTemplates.push(strvalue);
         }
-
-        alert("Site Templates - " + '\n' + Templates);
-
     }
 
     function failed(sender, args) {
-        alert("Failed");
+        alert("Failed to get site templates.");
     }
 
-    function GenerateTemplates() {
+    
 
-        ExecuteOrDelayUntilScriptLoaded(GetWebTemplates, "sp.js");
+    function InitializeGetTemplates() {
+        clientContext = new SP.ClientContext.get_current();
+        web = clientContext.get_web();
+
+        clientContext.load(web);
+        clientContext.executeQueryAsync(Function.createDelegate(this, this.onSuccess),
+            Function.createDelegate(this, this.onFail));
+    }
+    function onSuccess(sender, args) {
+        GetWebTemplates();
+    }
+    function onFail(sender, args) {
+        showErroNotification('Failed to get list. Error:' + args.get_message() + '\n' + args.get_stackTrace() + '');
     }
 
+
+    function containsAny(str, substrings) {
+        for (var i = 0; i != substrings.length; i++) {
+            var substring = substrings[i];
+            if (substring.startsWith(str)) {
+                return substring;
+            }
+        }
+        return null;
+    }
+
+   
+    ExecuteOrDelayUntilScriptLoaded(InitializeGetTemplates, "sp.js");
+    
 </script>
 ​
-<br />
-<br />
-<a href="#" onclick="javascript:GenerateTemplates();">Get Web Templates</a>
-<br />
-<a href="#" onclick="javascript:GenerateSites();">Click Here for Generate Sites Structures</a>
-<br />
-<asp:LinkButton ID="BtnGen" runat="server" OnClick="BtnGenerateClick" Text="Gen" Visible="true"></asp:LinkButton>
-<br />
-<br />
-<br />
-<div id="lblProgress"></div>
-<asp:Label id="LblErr" runat="server"></asp:Label>
+<div>
+    <h1>Welcome to Webpart Generate WebSites</h1>
+    <h2>Developer by Devscope</h2>
+    <div runat="server" id="panel">
+        <p><a href="#" onclick="javascript:GenerateSites();">Click Here for Generate Sites Structures</a></p>
+    </div>
+    <div id="lblProgress"></div>
+    <div id="serveRerror">
+        <asp:Label id="LblErr" runat="server"></asp:Label>
+    </div>
+</div>
+
+
+

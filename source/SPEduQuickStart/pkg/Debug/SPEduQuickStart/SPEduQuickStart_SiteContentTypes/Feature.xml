@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="Education Accelerators for Office 365 Site ContentTypes" Id="f353c947-7d47-4e8e-acdd-6fa7984e457c" Scope="Site" Title="Education Accelerators for Office 365 Site ContentTypes">
+  <ElementManifests>
+    <ElementManifest Location="ClassContentType\Elements.xml" />
+    <ElementManifest Location="CourseContentType\Elements.xml" />
+    <ElementManifest Location="YearContentType\Elements.xml" />
+    <ElementManifest Location="YearForClassContentType\Elements.xml" />
+  </ElementManifests>
+</Feature>

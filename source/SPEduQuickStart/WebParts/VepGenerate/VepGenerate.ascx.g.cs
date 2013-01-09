@@ -32,7 +32,7 @@ namespace SPEduQuickStart.WebParts.VepGenerate {
     
     public partial class VepGenerate {
         
-        protected global::System.Web.UI.WebControls.LinkButton BtnGen;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl panel;
         
         protected global::System.Web.UI.WebControls.Label LblErr;
         
@@ -42,16 +42,14 @@ namespace SPEduQuickStart.WebParts.VepGenerate {
         }
         
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Never)]
-        private global::System.Web.UI.WebControls.LinkButton @__BuildControlBtnGen() {
-            global::System.Web.UI.WebControls.LinkButton @__ctrl;
-            @__ctrl = new global::System.Web.UI.WebControls.LinkButton();
-            this.BtnGen = @__ctrl;
-            @__ctrl.ApplyStyleSheetSkin(this.Page);
-            @__ctrl.ID = "BtnGen";
-            @__ctrl.Text = "Gen";
-            @__ctrl.Visible = true;
-            @__ctrl.Click -= new System.EventHandler(this.BtnGenerateClick);
-            @__ctrl.Click += new System.EventHandler(this.BtnGenerateClick);
+        private global::System.Web.UI.HtmlControls.HtmlGenericControl @__BuildControlpanel() {
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl;
+            @__ctrl = new global::System.Web.UI.HtmlControls.HtmlGenericControl("div");
+            this.panel = @__ctrl;
+            @__ctrl.ID = "panel";
+            System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n        <p><a href=\"#\" onclick=\"javascript:GenerateSites();\">Click Here for Gen" +
+                        "erate Sites Structures</a></p>\r\n    "));
             return @__ctrl;
         }
         
@@ -70,92 +68,114 @@ namespace SPEduQuickStart.WebParts.VepGenerate {
             System.Web.UI.IParserAccessor @__parser = ((System.Web.UI.IParserAccessor)(@__ctrl));
             @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n\r\n<script type=\"text/javascript\">\r\n    var clientContext = null;\r\n    var web =" +
                         " null;\r\n    var strNotificationID;\r\n    var li = \"\";\r\n    var div;\r\n    var lock" +
-                        " = true;\r\n\r\n    function showNotification() {\r\n        strNotificationID = SP.UI" +
-                        ".Notify.addNotification(\"AGUARDE: <font color=\'#AA0000\'>A Processar Informação.." +
-                        "</font>\", true);\r\n    }\r\n\r\n    function removeNotification() {\r\n        \r\n      " +
-                        "  if (strNotificationID != null)\r\n            SP.UI.Notify.removeNotification(st" +
-                        "rNotificationID);\r\n    }\r\n\r\n    function showErroNotification(descr) {\r\n\r\n      " +
-                        "  var htmlerro = \"<font color=\'red\'>\" + descr + \"   </font>\";\r\n        SP.UI.Not" +
-                        "ify.addNotification(htmlerro, false);\r\n    }\r\n\r\n    \r\n    function GenerateSites" +
-                        "() {\r\n        div = document.getElementById(\"lblProgress\");\r\n        ExecuteOrDe" +
-                        "layUntilScriptLoaded(Initialize, \"sp.js\");\r\n    }\r\n\r\n    function Initialize() {" +
-                        "\r\n        clientContext = new SP.ClientContext.get_current();\r\n        web = cli" +
-                        "entContext.get_web();\r\n        \r\n        clientContext.load(web);\r\n        clien" +
+                        " = true;\r\n    var arrayTemplates = [];\r\n    var listItemID = 0;\r\n\r\n    function " +
+                        "showNotification() {\r\n        strNotificationID = SP.UI.Notify.addNotification(\"" +
+                        "WAITING: <font color=\'#AA0000\'>Processing Data...</font>\", true);\r\n    }\r\n\r\n    " +
+                        "function removeNotification() {\r\n        \r\n        if (strNotificationID != null" +
+                        ")\r\n            SP.UI.Notify.removeNotification(strNotificationID);\r\n    }\r\n\r\n   " +
+                        " function showErroNotification(descr) {\r\n\r\n        var htmlerro = \"<font color=\'" +
+                        "red\'>\" + descr + \"   </font>\";\r\n        SP.UI.Notify.addNotification(htmlerro, f" +
+                        "alse);\r\n    }\r\n\r\n    \r\n    function GenerateSites() {\r\n        div = document.ge" +
+                        "tElementById(\"lblProgress\");\r\n        ExecuteOrDelayUntilScriptLoaded(Load, \"sp." +
+                        "js\");\r\n    }\r\n\r\n    //function Initialize() {\r\n    //    clientContext = new SP." +
+                        "ClientContext.get_current();\r\n    //    web = clientContext.get_web();\r\n        " +
+                        "\r\n    //    clientContext.load(web);\r\n    //    clientContext.executeQueryAsync(" +
+                        "Function.createDelegate(this, this.onSuccess),\r\n    //        Function.createDel" +
+                        "egate(this, this.onFail));\r\n    //}\r\n    //function onSuccess(sender, args) {\r\n " +
+                        "   //    Load();\r\n    //}\r\n    //function onFail(sender, args) {\r\n    //    show" +
+                        "ErroNotification(\'Failed to get list. Error:\' + args.get_message() + \'\\n\' + args" +
+                        ".get_stackTrace() + \'\');\r\n    //}\r\n\r\n\r\n    function Load() {\r\n        \r\n        " +
+                        "var list = web.get_lists().getByTitle(\"IA\");\r\n        var camlQuery = new SP.Cam" +
+                        "lQuery();\r\n        var q = \'<View><RowLimit>1000</RowLimit></View>\';\r\n        ca" +
+                        "mlQuery.set_viewXml(q);\r\n        this.listItems = list.getItems(camlQuery);\r\n   " +
+                        "     clientContext.load(listItems, \'Include(ID,Title, SiteDescription,Template, " +
+                        "Root, CurricularYear, Parent, Code, VisibleBy)\');\r\n        clientContext.execute" +
+                        "QueryAsync(Function.createDelegate(this, this.onListItemsLoadSuccess),\r\n        " +
+                        "Function.createDelegate(this, this.onQueryFailed));\r\n\r\n\r\n    }\r\n\r\n    function o" +
+                        "nListItemsLoadSuccess(sender, args) {\r\n       \r\n\r\n        var listEnumerator = t" +
+                        "his.listItems.getEnumerator();\r\n        while (listEnumerator.moveNext()) {\r\n   " +
+                        "             var item = listEnumerator.get_current();\r\n                GenerateW" +
+                        "eb(item);\r\n        }  \r\n       \r\n        \r\n    }\r\n\r\n    function onQueryFailed(s" +
+                        "ender, args) {\r\n         showErroNotification(\'REQUEST FAILED: \' + args.get_mess" +
+                        "age() + \'\\n\' + args.get_stackTrace() + \'\');\r\n    }\r\n\r\n\r\n    function CalculateFi" +
+                        "nalUrl(item) {\r\n        var url = \"\";\r\n        if (item.get_item(\"Root\") != null" +
+                        ")\r\n            { url += item.get_item(\"Root\"); }\r\n        if (item.get_item(\"Cur" +
+                        "ricularYear\") != null)\r\n            { url += \"/\" + item.get_item(\"CurricularYear" +
+                        "\"); }\r\n        if (item.get_item(\"Parent\") != null)\r\n            { url += \"/\" + " +
+                        "item.get_item(\"Parent\"); }\r\n        if (url != \"\") {\r\n            return url + \"" +
+                        "/\" + item.get_item(\"Code\");\r\n        }\r\n        else {\r\n            return \"\"+ i" +
+                        "tem.get_item(\"Code\");\r\n        }\r\n    }\r\n\r\n\r\n    //item.get_item(\"Template\")\r\n\r\n" +
+                        "    function GenerateWeb(item) {\r\n        //debugger;\r\n        if (this.lock) {\r" +
+                        "\n            //removeNotification();\r\n            var webCreateInfo = new SP.Web" +
+                        "CreationInformation();\r\n            webCreateInfo.set_description(item.get_item(" +
+                        "\"SiteDescription\"));\r\n            var languageId = web.get_language();\r\n        " +
+                        "    webCreateInfo.set_language(languageId);\r\n            webCreateInfo.set_title" +
+                        "(item.get_item(\"Title\"));\r\n            var url = CalculateFinalUrl(item);\r\n     " +
+                        "       webCreateInfo.set_url(url);\r\n            webCreateInfo.set_useSamePermiss" +
+                        "ionsAsParentSite(true);\r\n            //var templatecode = item.get_item(\"SiteTem" +
+                        "plate_x003a_Code\").get_lookupValue();\r\n            var result = containsAny(item" +
+                        ".get_item(\"Template\"), this.arrayTemplates);\r\n            var templatecode = res" +
+                        "ult.split(\';\')[1];\r\n            webCreateInfo.set_webTemplate(templatecode);\r\n  " +
+                        "          this.listItemID = item.get_item(\"ID\");\r\n            CreateWebsite(webC" +
+                        "reateInfo);\r\n        }\r\n        else {\r\n            setTimeout(function () {\r\n  " +
+                        "              //showNotification();\r\n                GenerateWeb(item);\r\n       " +
+                        "     }, 1000);\r\n        }\r\n    }\r\n\r\n    function CreateWebsite(webCreateInfo) {\r" +
+                        "\n        this.lock = false;\r\n        this.oNewWebsite =this.web.get_webs().add(w" +
+                        "ebCreateInfo);\r\n        clientContext.load(this.oNewWebsite, \'ServerRelativeUrl\'" +
+                        ", \'Created\');\r\n        clientContext.executeQueryAsync(Function.createDelegate(t" +
+                        "his, this.onCreateWebSuccess), Function.createDelegate(this, this.onQueryFailed)" +
+                        ");\r\n        \r\n    }\r\n\r\n    function onCreateWebSuccess(sender, args, id) {\r\n    " +
+                        "    var html = \"<p>The website was succefull created: <a href=\'\" + location.prot" +
+                        "ocol + \"//\" + location.host + \'\' + this.oNewWebsite.get_serverRelativeUrl() + \"\'" +
+                        " >\" + this.oNewWebsite.get_title() + \"</a></p><br/>\";\r\n        var myDiv = docum" +
+                        "ent.getElementById(\"lblProgress\");\r\n        myDiv.innerHTML += html;\r\n        va" +
+                        "r url = location.protocol + \"//\" + location.host + \'\' + this.oNewWebsite.get_ser" +
+                        "verRelativeUrl()\r\n        UpdateURL(this.listItemID, url);\r\n        this.lock = " +
+                        "true;\r\n    }\r\n\r\n    function onQueryFailed(sender, args) {\r\n        //showErroNo" +
+                        "tification(\'REQUEST FAILED: \' + args.get_message() + \'\\n\' + args.get_stackTrace(" +
+                        ") + \'\');\r\n        var html = \"<p>!!Alert!! The creation the site was some proble" +
+                        "m :\" + args.get_message() + \"<br/> ::\" + args.get_stackTrace() +  \"</p><br/>\";\r\n" +
+                        "        var myDiv = document.getElementById(\"lblProgress\");\r\n        myDiv.inner" +
+                        "HTML += html;\r\n        this.lock = true;\r\n    }\r\n\r\n\r\n    function UpdateURL(id,f" +
+                        "inalurl)\r\n    {\r\n        var listIA = web.get_lists().getByTitle(\"IA\");\r\n       " +
+                        " this.listItem = listIA.getItemById(id);\r\n        this.listItem.set_item(\"Url\", " +
+                        "finalurl);\r\n        this.listItem.update();\r\n        clientContext.executeQueryA" +
+                        "sync(Function.createDelegate(this, this.onUpdSuccess),\r\n        Function.createD" +
+                        "elegate(this, this.onUpdFailed));\r\n    }\r\n\r\n    function onUpdSuccess(sender, ar" +
+                        "gs) {\r\n        this.listItemID = 0;\r\n    }\r\n\r\n    function onUpdFailed(sender, a" +
+                        "rgs) {\r\n    }\r\n\r\n   \r\n    function GetWebTemplates() {\r\n\r\n        var languageId" +
+                        " = this.web.get_language();\r\n        this.templateCollection = web.getAvailableW" +
+                        "ebTemplates(languageId, false);\r\n        \r\n        clientContext.load(templateCo" +
+                        "llection);\r\n\r\n        clientContext.executeQueryAsync(Function.createDelegate(th" +
+                        "is, this.success), Function.createDelegate(this, this.failed));\r\n    }\r\n\r\n    fu" +
+                        "nction success() {\r\n\r\n        var Templates = \"\";\r\n\r\n        var siteTemplatesEn" +
+                        "um = templateCollection.getEnumerator();\r\n\r\n        while (siteTemplatesEnum.mov" +
+                        "eNext()) {\r\n\r\n            var siteTemplate = siteTemplatesEnum.get_current();\r\n " +
+                        "           var strvalue = siteTemplate.get_title() + \";\" + siteTemplate.get_name" +
+                        "();\r\n            //alert(strvalue);\r\n            this.arrayTemplates.push(strval" +
+                        "ue);\r\n        }\r\n    }\r\n\r\n    function failed(sender, args) {\r\n        alert(\"Fa" +
+                        "iled to get site templates.\");\r\n    }\r\n\r\n    \r\n\r\n    function InitializeGetTempl" +
+                        "ates() {\r\n        clientContext = new SP.ClientContext.get_current();\r\n        w" +
+                        "eb = clientContext.get_web();\r\n\r\n        clientContext.load(web);\r\n        clien" +
                         "tContext.executeQueryAsync(Function.createDelegate(this, this.onSuccess),\r\n     " +
                         "       Function.createDelegate(this, this.onFail));\r\n    }\r\n    function onSucce" +
-                        "ss(sender, args) {\r\n        Load();\r\n    }\r\n    function onFail(sender, args) {\r" +
-                        "\n        showErroNotification(\'Failed to get list. Error:\' + args.get_message() " +
-                        "+ \'\\n\' + args.get_stackTrace() + \'\');\r\n    }\r\n\r\n\r\n    function Load() {\r\n       " +
-                        " \r\n        var list = web.get_lists().getByTitle(\"IA\");\r\n        var camlQuery =" +
-                        " new SP.CamlQuery();\r\n        var q = \'<View><RowLimit>1000</RowLimit></View>\';\r" +
-                        "\n        camlQuery.set_viewXml(q);\r\n        this.listItems = list.getItems(camlQ" +
-                        "uery);\r\n        clientContext.load(listItems, \'Include(Title, SiteDescription,Si" +
-                        "teTemplate,SiteTemplate_x003a_Code, Root, CurricularYear, Parent, Code, VisibleB" +
-                        "y)\');\r\n        clientContext.executeQueryAsync(Function.createDelegate(this, thi" +
-                        "s.onListItemsLoadSuccess),\r\n        Function.createDelegate(this, this.onQueryFa" +
-                        "iled));\r\n\r\n\r\n    }\r\n\r\n    function onListItemsLoadSuccess(sender, args) {\r\n     " +
-                        "  \r\n\r\n        var listEnumerator = this.listItems.getEnumerator();\r\n        whil" +
-                        "e (listEnumerator.moveNext()) {\r\n                var item = listEnumerator.get_c" +
-                        "urrent();\r\n                GenerateWeb(item);\r\n        }  \r\n       \r\n        \r\n " +
-                        "   }\r\n\r\n    function onQueryFailed(sender, args) {\r\n         showErroNotificatio" +
-                        "n(\'REQUEST FAILED: \' + args.get_message() + \'\\n\' + args.get_stackTrace() + \'\');\r" +
-                        "\n    }\r\n\r\n\r\n    function CalculateFinalUrl(item) {\r\n        var url = \"\";\r\n     " +
-                        "   if (item.get_item(\"Root\") != null)\r\n            { url += item.get_item(\"Root\"" +
-                        "); }\r\n        if (item.get_item(\"CurricularYear\") != null)\r\n            { url +=" +
-                        " \"/\" + item.get_item(\"CurricularYear\"); }\r\n        if (item.get_item(\"Parent\") !" +
-                        "= null)\r\n            { url += \"/\" + item.get_item(\"Parent\"); }\r\n        if (url " +
-                        "!= \"\") {\r\n            return url + \"/\" + item.get_item(\"Code\");\r\n        }\r\n    " +
-                        "    else {\r\n            return \"\"+ item.get_item(\"Code\");\r\n        }\r\n    }\r\n   " +
-                        " \r\n\r\n    function GenerateWeb(item) {\r\n        //debugger;\r\n        if (this.loc" +
-                        "k) {\r\n            //removeNotification();\r\n            var webCreateInfo = new S" +
-                        "P.WebCreationInformation();\r\n            webCreateInfo.set_description(item.get_" +
-                        "item(\"SiteDescription\"));\r\n            var languageId = web.get_language();\r\n   " +
-                        "         webCreateInfo.set_language(languageId);\r\n            webCreateInfo.set_" +
-                        "title(item.get_item(\"Title\"));\r\n            var url = CalculateFinalUrl(item);\r\n" +
-                        "            webCreateInfo.set_url(url);\r\n            webCreateInfo.set_useSamePe" +
-                        "rmissionsAsParentSite(true);\r\n            var templatecode = item.get_item(\"Site" +
-                        "Template_x003a_Code\").get_lookupValue();\r\n            webCreateInfo.set_webTempl" +
-                        "ate(templatecode);\r\n            CreateWebsite(webCreateInfo);\r\n        }\r\n      " +
-                        "  else {\r\n            setTimeout(function () {\r\n                //showNotificati" +
-                        "on();\r\n                GenerateWeb(item);\r\n            }, 1000);\r\n        }\r\n   " +
-                        " }\r\n\r\n    function CreateWebsite(webCreateInfo) {\r\n        this.lock = false;\r\n " +
-                        "       this.oNewWebsite =this.web.get_webs().add(webCreateInfo);\r\n        client" +
-                        "Context.load(this.oNewWebsite, \'ServerRelativeUrl\', \'Created\');\r\n        clientC" +
-                        "ontext.executeQueryAsync(Function.createDelegate(this, this.onCreateWebSuccess)," +
-                        " Function.createDelegate(this, this.onQueryFailed));\r\n        \r\n    }\r\n\r\n    fun" +
-                        "ction onCreateWebSuccess(sender, args) {\r\n        var html = \"<p>Foi criado com " +
-                        "sucesso o site <a href=\'\" + location.protocol + \"//\" + location.host + \'\' + this" +
-                        ".oNewWebsite.get_serverRelativeUrl() + \"\' >\" + this.oNewWebsite.get_title() + \"<" +
-                        "/a></p><br/>\";\r\n        var myDiv = document.getElementById(\"lblProgress\");\r\n   " +
-                        "     myDiv.innerHTML += html;\r\n        this.lock = true;\r\n    }\r\n\r\n    function " +
-                        "onQueryFailed(sender, args) {\r\n        showErroNotification(\'REQUEST FAILED: \' +" +
-                        " args.get_message() + \'\\n\' + args.get_stackTrace() + \'\');\r\n    }\r\n\r\n\r\n\r\n\r\n    fu" +
-                        "nction GetWebTemplates() {\r\n\r\n        var context = new SP.ClientContext.get_cur" +
-                        "rent();\r\n\r\n        var web = context.get_web();\r\n        //var languageId = web." +
-                        "get_language();\r\n        //alert(languageId);\r\n        //this.templateCollection" +
-                        " = web.getAvailableWebTemplates(languageId, false);\r\n        this.templateCollec" +
-                        "tion = web.getAvailableWebTemplates(2070, false);\r\n\r\n        context.load(templa" +
-                        "teCollection);\r\n\r\n        context.executeQueryAsync(Function.createDelegate(this" +
-                        ", this.success), Function.createDelegate(this, this.failed));\r\n    }\r\n\r\n    func" +
-                        "tion success() {\r\n\r\n        var Templates = \"\";\r\n\r\n        var siteTemplatesEnum" +
-                        " = templateCollection.getEnumerator();\r\n\r\n        while (siteTemplatesEnum.moveN" +
-                        "ext()) {\r\n\r\n            var siteTemplate = siteTemplatesEnum.get_current();\r\n\r\n " +
-                        "           Templates += siteTemplate.get_title() + \"-\" + siteTemplate.get_name()" +
-                        "  +\'\\n\';\r\n\r\n        }\r\n\r\n        alert(\"Site Templates - \" + \'\\n\' + Templates);\r" +
-                        "\n\r\n    }\r\n\r\n    function failed(sender, args) {\r\n        alert(\"Failed\");\r\n    }" +
-                        "\r\n\r\n    function GenerateTemplates() {\r\n\r\n        ExecuteOrDelayUntilScriptLoade" +
-                        "d(GetWebTemplates, \"sp.js\");\r\n    }\r\n\r\n</script>\r\n​\r\n<br />\r\n<br />\r\n<a href=\"#\"" +
-                        " onclick=\"javascript:GenerateTemplates();\">Get Web Templates</a>\r\n<br />\r\n<a hre" +
-                        "f=\"#\" onclick=\"javascript:GenerateSites();\">Click Here for Generate Sites Struct" +
-                        "ures</a>\r\n<br />\r\n"));
-            global::System.Web.UI.WebControls.LinkButton @__ctrl1;
-            @__ctrl1 = this.@__BuildControlBtnGen();
+                        "ss(sender, args) {\r\n        GetWebTemplates();\r\n    }\r\n    function onFail(sende" +
+                        "r, args) {\r\n        showErroNotification(\'Failed to get list. Error:\' + args.get" +
+                        "_message() + \'\\n\' + args.get_stackTrace() + \'\');\r\n    }\r\n\r\n\r\n    function contai" +
+                        "nsAny(str, substrings) {\r\n        for (var i = 0; i != substrings.length; i++) {" +
+                        "\r\n            var substring = substrings[i];\r\n            if (substring.startsWi" +
+                        "th(str)) {\r\n                return substring;\r\n            }\r\n        }\r\n       " +
+                        " return null;\r\n    }\r\n\r\n   \r\n    ExecuteOrDelayUntilScriptLoaded(InitializeGetTe" +
+                        "mplates, \"sp.js\");\r\n    \r\n</script>\r\n​\r\n<div>\r\n    <h1>Welcome to Webpart Genera" +
+                        "te WebSites</h1>\r\n    <h2>Developer by Devscope</h2>\r\n    "));
+            global::System.Web.UI.HtmlControls.HtmlGenericControl @__ctrl1;
+            @__ctrl1 = this.@__BuildControlpanel();
             @__parser.AddParsedSubObject(@__ctrl1);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n<br />\r\n<br />\r\n<br />\r\n<div id=\"lblProgress\"></div>\r\n"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n    <div id=\"lblProgress\"></div>\r\n    <div id=\"serveRerror\">\r\n        "));
             global::System.Web.UI.WebControls.Label @__ctrl2;
             @__ctrl2 = this.@__BuildControlLblErr();
             @__parser.AddParsedSubObject(@__ctrl2);
-            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n"));
+            @__parser.AddParsedSubObject(new System.Web.UI.LiteralControl("\r\n    </div>\r\n</div>\r\n\r\n\r\n\r\n"));
         }
         
         private void InitializeControl() {

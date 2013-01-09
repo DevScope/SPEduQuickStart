@@ -39,7 +39,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SandboxedSolution>True</SandboxedSolution>
+    <SandboxedSolution>False</SandboxedSolution>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,11 +89,22 @@
   <ItemGroup>
     <Compile Include="Code\SitesCreation.cs" />
     <Compile Include="Code\SPGenerateHelpers.cs" />
+    <Compile Include="Features\SiteSandBoxWebParts\SiteSandBoxWebParts.EventReceiver.cs">
+      <DependentUpon>SiteSandBoxWebParts.feature</DependentUpon>
+    </Compile>
     <Compile Include="Features\SiteTemplates\SiteTemplates.EventReceiver.cs">
       <DependentUpon>SiteTemplates.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receivers\ListsEventReceiver\ListsEventReceiver.cs" />
+    <Compile Include="WebParts\AutocompleteSugestionTemplate\AutocompleteSugestionTemplate.ascx.cs">
+      <DependentUpon>AutocompleteSugestionTemplate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebParts\AutocompleteSugestionTemplate\AutocompleteSugestionTemplate.ascx.g.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutocompleteSugestionTemplate.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebParts\VepGenerate\VepGenerate.ascx.cs">
       <DependentUpon>VepGenerate.ascx</DependentUpon>
     </Compile>
@@ -222,6 +233,10 @@
     <None Include="SiteTemplates\YearSiteTemplate\YearSiteTemplate\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{91dee44d-49c5-4dc5-a620-675f8558b41c}</SharePointProjectItemId>
     </None>
+    <None Include="WebParts\AutocompleteSugestionTemplate\AutocompleteSugestionTemplate.webpart" />
+    <None Include="WebParts\AutocompleteSugestionTemplate\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a576da07-35ed-4dfb-aa47-37adea1f28f4}</SharePointProjectItemId>
+    </None>
     <None Include="WebParts\VepGenerate\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{c3db6b9f-d0d4-4842-bd4a-89529782b409}</SharePointProjectItemId>
     </None>
@@ -242,7 +257,16 @@
       <DependentUpon>SiteTemplates.feature</DependentUpon>
     </Content>
     <Content Include="ModuleSPEduQuickStart\JS\SPEduQuickStart\jquery-1.8.1.min.js" />
-    <Content Include="ModuleSPEduQuickStart\Elements.xml" />
+    <Content Include="ModuleSPEduQuickStart\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="ModuleSPEduQuickStart\JS\SPEduQuickStart\jquery-ui.css" />
+    <Content Include="ModuleSPEduQuickStart\JS\SPEduQuickStart\jquery-ui.js" />
+    <Content Include="WebParts\AutocompleteSugestionTemplate\AutocompleteSugestionTemplate.ascx">
+      <Generator>SharePointWebPartCodeGenerator</Generator>
+      <LastGenOutput>AutocompleteSugestionTemplate.ascx.g.cs</LastGenOutput>
+    </Content>
+    <Content Include="WebParts\AutocompleteSugestionTemplate\Elements.xml" />
     <Content Include="WebParts\VepGenerate\Elements.xml" />
     <Content Include="WebParts\VepGenerate\VepGenerate.ascx">
       <Generator>SharePointWebPartCodeGenerator</Generator>

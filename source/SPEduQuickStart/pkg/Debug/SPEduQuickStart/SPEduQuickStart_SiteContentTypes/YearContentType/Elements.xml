@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ContentType ID="0x0100DBA3370EF05A4448A4137EE7C7330B4C" 
+               Name="Year ContentType" 
+               Description="Year (Educational) ContentType"
+              Group="DevScope SPEduQuickStart Office 365 Content Types"
+               Version="9" Inherits="FALSE">
+    <FieldRefs>
+      <FieldRef ID="{FEA1DA6C-E511-4081-9556-C96B7963C29E}" Name="YearName" Required="TRUE" />
+      <FieldRef ID="{85A7E140-2287-46e7-B645-87D665AF8DCA}" Name="YearCode" Required="TRUE" />
+      <FieldRef ID="{C896FB76-2565-493f-8C11-DADD730826B6}" Name="YearSiteUrl" />
+    </FieldRefs>
+  </ContentType>
+</Elements>

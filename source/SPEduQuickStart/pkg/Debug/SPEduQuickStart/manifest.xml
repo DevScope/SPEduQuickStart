@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="bae9d56d-b3d6-450e-86f1-7980d8960d07" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="SPEduQuickStart.dll" DeploymentTarget="GlobalAssemblyCache">
+      <SafeControls>
+        <SafeControl Assembly="SPEduQuickStart, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d4cf35531c8b844c" Namespace="SPEduQuickStart.WebParts.VepGenerate" TypeName="*" />
+      </SafeControls>
+    </Assembly>
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="SPEduQuickStart_SiteColumns\Feature.xml" />
+    <FeatureManifest Location="SPEduQuickStart_SiteContentTypes\Feature.xml" />
+    <FeatureManifest Location="SPEduQuickStart_SiteReceivers\Feature.xml" />
+    <FeatureManifest Location="SPEduQuickStart_SiteSandBoxWebParts\Feature.xml" />
+  </FeatureManifests>
+</Solution>
